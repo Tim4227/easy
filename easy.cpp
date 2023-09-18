@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "locale.h"
-#include "module.h"
+#include "easy.h"
 using namespace std;
 
 void itc_name() {
