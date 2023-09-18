@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 #include "locale.h"
 #include "easy.h"
 using namespace std;
@@ -38,19 +37,19 @@ bool itc_iseven(int a) {
 }
 
 int itc_max(int a, int b) {
-	return (a + b + abs(a - b)) / 2;
+	return (a + b + itc_abs(a - b)) / 2;
 }
 
 int itc_min(int a, int b) {
-	return (a + b - abs(a - b)) / 2;
+	return (a + b - itc_abs(a - b)) / 2;
 }
 
 double itc_fmax(double a, double b) {
-	return (a + b + abs(a - b)) / 2;
+	return (a + b + itc_fabs(a - b)) / 2;
 }
 
 double itc_fmin(double a, double b) {
-	return (a + b - abs(a - b)) / 2;
+	return (a + b - itc_fabs(a - b)) / 2;
 }
 
 int itc_sqrt(int a) {
@@ -99,7 +98,7 @@ int itc_str(int a, int b, int c) {
 		return -1;
 	if (max - (sum - max - min) <= min)
 		return -1;
-	return int(sqrt((sum / 2 - a) * (sum / 2 - b) * (sum / 2 - c) * sum / 2));
+	return itc_sqrt((sum / 2 - a) * (sum / 2 - b) * (sum / 2 - c) * sum / 2);
 }
 
 double itc_scir(int a) {
