@@ -37,13 +37,15 @@ bool itc_iseven(int a) {
 }
 
 int itc_max(int a, int b) {
-	unsigned long long sum = a + b;
-	return (sum + itc_abs(a - b)) / 2;
+	if (a > b)
+		return a;
+	return b;
 }
 
 int itc_min(int a, int b) {
-	unsigned long long sum = a + b;
-	return (sum - itc_abs(a - b)) / 2;
+	if (a < b)
+		return a;
+	return b;
 }
 
 double itc_fmax(double a, double b) {
