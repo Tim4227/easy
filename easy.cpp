@@ -53,7 +53,7 @@ double itc_fmin(double a, double b) {
 	return (a + b - abs(a - b)) / 2;
 }
 
-int itc_sqrt(unsigned long long a) {
+int itc_sqrt(int a) {
 	if (a == 1)
 		return 1;
 	if (a == 0)
