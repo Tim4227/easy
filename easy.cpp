@@ -37,19 +37,25 @@ bool itc_iseven(int a) {
 }
 
 int itc_max(int a, int b) {
-	return (a + b + itc_abs(a - b)) / 2;
+	unsigned long long sum = a + b;
+	return (sum + itc_abs(a - b)) / 2;
 }
 
 int itc_min(int a, int b) {
-	return (a + b - itc_abs(a - b)) / 2;
+	unsigned long long sum = a + b;
+	return (sum - itc_abs(a - b)) / 2;
 }
 
 double itc_fmax(double a, double b) {
-	return (a + b + itc_fabs(a - b)) / 2;
+	if (a > b)
+		return a;
+	return b;
 }
 
 double itc_fmin(double a, double b) {
-	return (a + b - itc_fabs(a - b)) / 2;
+	if (a < b)
+		return a;
+	return b;
 }
 
 int itc_sqrt(int a) {
@@ -82,23 +88,13 @@ int itc_str(int a, int b, int c) {
 	if ((a <= 0) || (b <= 0) || (c <= 0))
 		return -1;
 	int max, min, sum = a + b + c;
-	if ((a < b) && (a < c))
-		min = a;
-	if ((b < a) && (b < c))
-		min = b;
-	if ((c < b) && (c < a))
-		min = c;
-	if ((a > b) && (a > c))
-		max = a;
-	if ((b > a) && (b > c))
-		max = b;
-	if ((c > b) && (c > a))
-		max = c;
+	min = itc_min(itc_min(a, b), c);
+	max = itc_max(itc_max(a, b), c);
 	if (sum - max <= max)
 		return -1;
 	if (max - (sum - max - min) <= min)
 		return -1;
-	return itc_sqrt((sum / 2 - a) * (sum / 2 - b) * (sum / 2 - c) * sum / 2);
+	return itc_sqrt(int((sum / 2.0 - a) * (sum / 2.0 - b) * (sum / 2.0 - c) * sum / 2.0));
 }
 
 double itc_scir(int a) {
