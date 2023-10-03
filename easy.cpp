@@ -94,7 +94,7 @@ int itc_str(int a, int b, int c) {
 	max = itc_max(itc_max(a, b), c);
 	if (sum - max <= max)
 		return -1;
-	if (max - (sum - max - min) <= min)
+	if (max - (sum - max - min) > min)
 		return -1;
 	return itc_sqrt(int((sum / 2.0 - a) * (sum / 2.0 - b) * (sum / 2.0 - c) * sum / 2.0));
 }
